@@ -1,0 +1,13 @@
+alfabeto
+
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+abcdefghijklmnopqrstuvwxyz
+0123456789
+! @ # $ % ˆ & _ - = + [ ] { } ; : " < > , / \ | ~
+
+(eval A.G) = ABCDEFG
+(eval A.A) = ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&_-=+[]{};:"<>,/|~};A
+(eval A.c) = ABCDEFGHIJKLMNOPQRSTUVWXYZabc
+(eval 0.9) = 0123456789
+(eval A.Z0.9) = ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+(eval a.gABC0.3.7) = abcdefgABC01234567

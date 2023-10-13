@@ -1,0 +1,47 @@
+Mdt
+0.9 ->0123456789
+A..Za.z
+ (not str)
+ (eval str_regex)
+
+Alfabeto:
+ Tutto ammesso tranne:
+Caratteri speciali:
+( ) . ? - *
+Nomi degli stati nin consentiti
+init
+end
+eval
+not
+If
+Ifse
+Right
+Left
+Stay
+
+
+Esempio: sostituisce a con 0, b con 1 ecc fino a E con 5
+
+(init (eval a.e) init (eval 0.5) >)
+
+Oppure sostituisci le lettere solo nella posizione dispari
+(init ? disp ? >)
+(init - end - -)
+(disp (eval a.e) init (eval 0.5) >)
+
+Si può riscrivere con:
+
+(init ? (disp (eval a.e) init (eval 0.5) >) ? >)
+(init - end - -)
+
+Oppure uso i casi di lettura con if
+(Init (ifse - end disp)) ? Right)
+(Disp (ifse (eval a.e) init end) (eval 0.5) right)
+
+
+Ifse lavora come?
+(If str_in stato)
+(Ifse str_in stato else)
+
+
+
