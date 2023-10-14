@@ -8,7 +8,15 @@ Alfabeto:
  Tutto ammesso tranne:
 Caratteri speciali:
 ( ) . ? - *
+
+* vuol dire qualsiasi cosa
+- vuol dire scrivi uno spazio
+? vuol dire lascia quello che trovi
+. vuole dire DA-A
+() parentesi per espressioni
+
 Nomi degli stati nin consentiti
+
 init
 end
 eval
@@ -45,3 +53,8 @@ Ifse lavora come?
 
 
 
+RIASSUNTO DI TUTTO:
+
+un'espressione è sempre cosi:
+
+(stato_iniziale (if[se] <char_letto> stato_se_true [stato_se_false]) <char_scritto> movimento)

@@ -28,6 +28,7 @@ int is_in (char c, char* str) {
     return -1;
 }
 
+
 int length(char* str) {
     int i = 0;
     while (str[i] != '\0') {
@@ -36,16 +37,25 @@ int length(char* str) {
     return i;
 }
 
+
 int find_position_in_alphabet (char c) {
     int i = 0;
+    int found = -1;
     while (i < 87) {
         if (alphabet[i] == c) {
+            found = 0;
             break;
         }
         i++;
     }
-    return i;
+
+    if (found == 0) {
+        return i;
+    } else {
+        return -1;
+    }
 }
+
 
 char* get_expandable (char c_from, char c_to) {
     char* str_out = (char *) malloc(sizeof (char) * ALPHABET_SIZE);
@@ -61,4 +71,9 @@ char* get_expandable (char c_from, char c_to) {
     str_out[j++] = '\0';
 
     return str_out;
+}
+
+
+int compare_str_in_out (char* s_read, char *s_write) {
+    return length(s_read) != length(s_write) ? -1 : 0;
 }
