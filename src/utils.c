@@ -75,7 +75,7 @@ int compare_str_in_out (char* s_read, char *s_write) {
         return 0;
     }
 
-    if (length(s_write) == 1 && s_write[0] = '-') {
+    if (length(s_write) == 1 && s_write[0] == '-') {
         return 0;
     }
 
