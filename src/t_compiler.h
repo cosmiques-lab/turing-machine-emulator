@@ -1,5 +1,5 @@
 //
-// Created by Matteo Fiori on 13/10/23.
+// Created by bodhi
 //
 
 #ifndef TURING_MACHINE_EMULATOR_T_COMPILER_H
@@ -13,6 +13,8 @@ typedef struct t_expression_row {
     char *str_write;
     char *next_state;
     char *move;
+    int error_type;
+    int error_line;
 } expression_row;
 
 /**
@@ -49,8 +51,8 @@ char** t_trim_expression ( char* );
 expression_row** evaluate_code ( char* );
 
 /**
- *
- *    OK chiamo il @t_lex_evaluate_row per valutare che sia nella forma corretta: (stato_iniziale (if[se] <char_letto> stato_se_true [stato_se_false]) <char_scritto> movimento) TODO FORSE È MEGLIO P[RIMA CHIAMARE QUESTO PER VEDERE CHE LE PARENTESI SIANO CORRETTE
+ * todo modifica documentazione
+ *    OK chiamo il @t_lex_evaluate_row per valutare che sia nella forma corretta: (stato_iniziale (if[se] <char_letto> stato_se_true [stato_se_false]) <char_scritto> movimento)
  *    OK io passo la stringa normale, chiamo il @t_trim_expression che mi mette in un array di stringhe tutta la riga.
  *    OK chiamo il @evaluate_expression che mi valuta gli (eval) e i (not) [questo metodo sarà molto complesso perchè mi gestirà anche le espressioni molto annidate [deve pure riconoscere a partire da una riga in ingresso (in char**) tutte le espressioni di eval e not.
  *    OK chiamo il @enqueue_expression che mi creerà una struttura definita

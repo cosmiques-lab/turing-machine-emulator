@@ -1,5 +1,5 @@
 //
-// Created by Matteo Fiori on 13/10/23.
+// Created by bodhi
 //
 
 #include "t_compiler.h"
@@ -120,6 +120,14 @@ int evaluate_expression ( char** str_in ) {
         }
     } while (str_in[i] != NULL);
 
+    if (length(str_in[1]) == 1 && strcmp(str_in[1], "*") == 0) {
+        str_in[1] = get_alphabet();
+    }
+
+    if (length(str_in[3]) == 1 && strcmp(str_in[3], "?") == 0) {
+        str_in[3] = str_in[1];
+    }
+
     if (t_lex_str_alphabet (str_in[1]) == -1 || t_lex_str_alphabet (str_in[3]) == -1) {
         return -1;
     }
@@ -147,7 +155,11 @@ expression_row** evaluate_code ( char* code ) {
         if (eval_row == 0) {
             operations[i] = expr_row;
         } else {
-            // gestione dell'errore
+            expression_row* error_row = (expression_row*) malloc(sizeof(expression_row));
+            error_row->error_line = i;
+            error_row->error_type = eval_row;
+            operations[0] = error_row;
+            return operations;
         }
         i++;
     } while (rows[i] != NULL);

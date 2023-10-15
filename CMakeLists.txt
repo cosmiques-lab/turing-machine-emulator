@@ -8,4 +8,6 @@ add_executable(turing_machine_emulator
         src/main.c
         src/utils.h
         src/utils.c
-        src/t_lex_parser.c)
+        src/t_lex_parser.c
+        src/turing_machine.c
+        src/evaluation_machine.c)

@@ -1,5 +1,5 @@
 //
-// Created by Matteo Fiori on 13/10/23.
+// Created by bodhi
 //
 
 #ifndef TURING_MACHINE_EMULATOR_UTILS_H
@@ -59,4 +59,17 @@ int compare_str_in_out (char* s_read, char *s_write);
  */
 char** split_code_into_rows ( char* );
 
+/**
+ *
+ * @param c
+ * @param str
+ * @return
+ */
+int get_position_in_string (char, char*);
+
+/**
+ *
+ * @return
+ */
+char* get_alphabet ();
 #endif //TURING_MACHINE_EMULATOR_UTILS_H

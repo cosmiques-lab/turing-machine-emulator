@@ -1,5 +1,5 @@
 //
-// Created by Matteo Fiori on 13/10/23.
+// Created by bodhi
 //
 
 #include "utils.h"
@@ -8,7 +8,7 @@
 char alphabet[] = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
                     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
                     '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-                    '!', '@', '#', '$', '%', '&', '_', '-', '=', '+', '[', ']', '{', '}', ';', ':', '"', '<', '>', ',', '/', '|', '~', '}', ';'};
+                    '!', '@', '#', '$', '%', '&', '_', '=', '+', '[', ']', '{', '}', ';', ':', '"', '<', '>', ',', '/', '|', '~', '}', ';', '-'};
 
 char get_char_in_alphabet ( int i ) {
     if (i < 0 || i > ALPHABET_SIZE - 1) {
@@ -75,7 +75,7 @@ int compare_str_in_out (char* s_read, char *s_write) {
         return 0;
     }
 
-    if (length(s_write) == 1 && s_write[0] == '-') {
+    if (length(s_write) == 1 && s_write[0] == '?') {
         return 0;
     }
 
@@ -109,4 +109,19 @@ char** split_code_into_rows ( char* code ) {
     } while (code[h] != '\0');
 
     return rows;
+}
+
+
+int get_position_in_string (char c, char* str) {
+    int i = 0;
+    while (str[i] != '\0') {
+        if (str[i] == c) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+char* get_alphabet () {
+    return alphabet;
 }

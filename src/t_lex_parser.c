@@ -1,5 +1,5 @@
 //
-// Created by Matteo Fiori on 14/10/23.
+// Created by bodhi
 //
 
 #include "t_lex_parser.h"
@@ -34,8 +34,6 @@ int t_lex_evaluate_trim ( char** rows) {
                 not_param_regex = -1;
             }
         } else if (strcmp(c, "not") == 0) {
-            // next può avere come next 1 eval
-            //                          1 stringa
             next_not = 0;
             not_param_regex = 0;
             counter++;
@@ -79,6 +77,10 @@ int t_lex_evaluate_row (char* row) {
             search_close = 0;
             i = 0;
         }
+    }
+
+    if (length(brack) % 2 != 0) {
+        return -1;
     }
 
     for (i = 0; i < length(brack); i++) {
