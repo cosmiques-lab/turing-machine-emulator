@@ -5,6 +5,8 @@
 #include "evaluation_machine.h"
 
 #include <string.h>
+#include <stdio.h>
+#include <unistd.h>
 
 int* search_status ( char* status, expression_row** rows) {
     int* init_n = (int*) malloc(sizeof(int) * 2000); // TODO da mettere un length
@@ -25,8 +27,7 @@ int* search_status ( char* status, expression_row** rows) {
     return init_n;
 }
 
-// TODO da rifare con metodo di visualizzazione riga per riga
-int machine_evaluate ( expression_row** rows, t_machine* t) {
+int machine_evaluate ( expression_row** rows, t_machine* t, int speed) {
     char* status_name = "init";
     int* status = search_status(status_name, rows);
     do {
@@ -42,13 +43,8 @@ int machine_evaluate ( expression_row** rows, t_machine* t) {
                 char* chars_to_write = exp->str_write;
                 int position_alphabet = get_position_in_string (machine_char, chars_read);
                 char char_to_write = chars_to_write[position_alphabet];
-                write_char(char_to_write, t);
 
-                if (strcmp(exp->move, "right") == 0) {
-                    move_right(t);
-                } else if (strcmp(exp->move, "left") == 0) {
-                    move_left(t);
-                }
+                modify_status(char_to_write, exp->move, t, speed);
 
                 status_name = exp->next_state;
                 break;
@@ -66,4 +62,29 @@ int machine_evaluate ( expression_row** rows, t_machine* t) {
     } while (status[0] != -1);
 
     return 0;
+}
+
+void modify_status ( char c, char* move, t_machine* t, int speed) {
+    write_char(c, t);
+
+    if (strcmp(move, "right") == 0) {
+        move_right(t);
+    } else if (strcmp(move, "left") == 0) {
+        move_left(t);
+    }
+
+    print_machine(t, speed);
+}
+
+void print_machine (t_machine* t, int speed) {
+    printf("      %s      \n", t->tape_);
+
+    int space_pointer = t->pointer_;
+    char* spaces = (char*) malloc (sizeof(char) * space_pointer);
+    for (int i = 0; i < space_pointer; i++) {
+        spaces[i] = ' ';
+    }
+
+    printf("     %s|\n", spaces);
+    sleep(speed);
 }

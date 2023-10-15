@@ -164,6 +164,9 @@ expression_row** evaluate_code ( char* code ) {
         i++;
     } while (rows[i] != NULL);
 
+    free(rows);
+    free(code);
+
     return operations;
 }
 
