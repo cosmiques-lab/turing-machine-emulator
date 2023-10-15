@@ -4,20 +4,15 @@
 
 #include <stdio.h>
 #include "t_compiler.h"
+#include "turing_machine.h"
+
 void test() {
-    t_machine test_machine;     // macchina di test a NULL x le operazioni sulle stringhe
+    char* row_1 = "(init (not (eval A.C)) end (not (eval a.c)) stay)";
 
-    /**
-     *  esempio di lettura di @row_1
-     * sei in stato init
-     * se leggi A.Z vai in stato END
-     * scrivi a.z
-     * e rimani con la testina ferma.
-     */
-    char* row_1 = "(init (eval A.Z) end (eval a.z) stay)";
-    char** row_split = t_trim_expression(row_1);
+    t_machine* test_machine = init_machine("CIAO");     // macchina di test a NULL x le operazioni sulle stringhe
+    expression_row** code = evaluate_code (row_1);
 
-    printf("end test\n");
+
 
 }
 

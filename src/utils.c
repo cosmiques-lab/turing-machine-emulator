@@ -28,7 +28,6 @@ int is_in (char c, char* str) {
     return -1;
 }
 
-
 int length(char* str) {
     int i = 0;
     while (str[i] != '\0') {
@@ -36,7 +35,6 @@ int length(char* str) {
     }
     return i;
 }
-
 
 int find_position_in_alphabet (char c) {
     int i = 0;
@@ -56,7 +54,6 @@ int find_position_in_alphabet (char c) {
     }
 }
 
-
 char* get_expandable (char c_from, char c_to) {
     char* str_out = (char *) malloc(sizeof (char) * ALPHABET_SIZE);
 
@@ -73,7 +70,43 @@ char* get_expandable (char c_from, char c_to) {
     return str_out;
 }
 
-
 int compare_str_in_out (char* s_read, char *s_write) {
+    if (length(s_read) == 1 && s_read[0] == '*') {
+        return 0;
+    }
+
+    if (length(s_write) == 1 && s_write[0] = '-') {
+        return 0;
+    }
+
     return length(s_read) != length(s_write) ? -1 : 0;
+}
+
+/**
+ *
+ * @param code
+ * @return
+ */
+char** split_code_into_rows ( char* code ) {
+    int size = 2000;
+    char** rows = (char**) malloc (sizeof(char*) * size);
+
+    int i = 0;
+    int j = 0;
+    int h = 0;
+    do {
+        char c = code[h++];
+
+        if (c == '\n') {
+            i++;
+            j = 0;
+        } else {
+            if (rows[i] == NULL) {
+                rows[i] = (char*) malloc(sizeof (char) * size);
+            }
+            rows[i][j++] = c;
+        }
+    } while (code[h] != '\0');
+
+    return rows;
 }

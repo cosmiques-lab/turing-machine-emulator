@@ -52,5 +52,11 @@ int is_in (char, char*);
  */
 int compare_str_in_out (char* s_read, char *s_write);
 
+/**
+ *
+ * @param code
+ * @return array of lines, divided by \n char
+ */
+char** split_code_into_rows ( char* );
 
 #endif //TURING_MACHINE_EMULATOR_UTILS_H

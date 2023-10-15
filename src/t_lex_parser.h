@@ -5,12 +5,20 @@
 #ifndef TURING_MACHINE_EMULATOR_T_LEX_PARSER_H
 #define TURING_MACHINE_EMULATOR_T_LEX_PARSER_H
 
+
 /**
- * TODO scrivere tutto.
- * @param row
- * @return 0 if @row is correctly written
+ *
+ * @param rows
+ * @return 0 if trim rows are ok, -1 otherwise
  */
-int t_lex_evaluate_row ( char** );
+int t_lex_evaluate_trim ( char** );
+
+/**
+ *
+ * @param row
+ * @return 0 if @row is correctly written with brackets
+ */
+int t_lex_evaluate_row ( char* );
 
 /**
  *
